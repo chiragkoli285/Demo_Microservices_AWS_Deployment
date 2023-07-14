@@ -16,13 +16,18 @@ public class AppointmentCircuitBreakerService {
 	@Autowired
 	RestTemplate restTemplate;
 
+//	@CircuitBreaker(name = "appointmentService")
+//	public Future<PatientDTO> getPatientByName(String patientName) {
+//		return Future
+//				.of(() -> restTemplate.getForObject("http://PatientMS/patient/name/" + patientName, PatientDTO.class));
+//	}
 	@CircuitBreaker(name = "appointmentService")
 	public Future<PatientDTO> getPatientByName(String patientName) {
 		return Future
-				.of(() -> restTemplate.getForObject("http://PatientMS/patient/name/" + patientName, PatientDTO.class));
+				.of(() -> new RestTemplate().getForObject("http://localhost:8300"+"/patient/name/" + patientName, PatientDTO.class));
 	}
 
 	public Future<DoctorDTO> getDoctorByName(String doctorName) {
-		return Future.of(() -> restTemplate.getForObject("http://DoctorMS/doctor/name/" + doctorName, DoctorDTO.class));
+		return Future.of(() -> new RestTemplate().getForObject("http://localhost:8200"+"/doctor/name/" + doctorName, DoctorDTO.class));
 	}
 }
