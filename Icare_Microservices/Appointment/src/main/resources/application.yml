@@ -1,8 +1,0 @@
-resilience4j.circuitbreaker:
-  instances:
-    appointmentService:
-      failureRateThreshold: 50
-      ringBufferSizeInClosedState: 5
-      ringBufferSizeInHalfOpenState: 3
-      waitDurationInOpenState: 30s
-      automaticTransitionFromOpenToHalfOpenEnabled: true 

@@ -2,6 +2,8 @@ package com.icare.patient.service;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,6 @@ import com.icare.patient.dto.PatientDTO;
 import com.icare.patient.entity.Patient;
 import com.icare.patient.repository.PatientRepository;
 
-import jakarta.transaction.Transactional;
 
 @Service(value = "patientService")
 @Transactional
